@@ -20,20 +20,33 @@ function App() {
   );
 }
 
-//destructure usestate
+//destructure usestate, 
 function MovieCounter(){
 
+//Event handler state update
   const [count, setCount] = useState(0);
-  console.log(count, setCount);
+  
+  const handleClick = () =>setCount(count + 1) ;
   return(
     <div>
-      <button>Add Movie</button>
-  <h3>Number of movies: </h3>
+      <button onClick = {handleClick}>Add Movie</button>
+     <h3>Number of movies: {count} </h3>
+     <MovieDisplay movies = {count}></MovieDisplay>
+     <MovieDisplay movies = {count + 10}></MovieDisplay>
+     <MovieDisplay movies = {count + 100}></MovieDisplay>
+     <MovieDisplay movies = {count}></MovieDisplay>
     </div>
   )
- 
 }
-console.log(MovieCounter);
+
+//pass state Recap
+function MovieDisplay (props){
+  return (
+    <div>
+      <h4>Movies I have acted: {props.movies}</h4>
+    </div>
+  )
+}
 
 //components and pass data(props)
 function Actor(props){
