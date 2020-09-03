@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
@@ -6,6 +6,8 @@ function App() {
   const actorName = ["mahadi", "mahdi hasan", "hasan mahadi", "jahid hasan"]
   return (
     <div className="App">
+
+      <MovieCounter></MovieCounter>
      
       <Actor name = {actorName[0]}></Actor>
       <Actor name = "nahid"></Actor>
@@ -17,6 +19,21 @@ function App() {
     </div>
   );
 }
+
+//destructure usestate
+function MovieCounter(){
+
+  const [count, setCount] = useState(0);
+  console.log(count, setCount);
+  return(
+    <div>
+      <button>Add Movie</button>
+  <h3>Number of movies: </h3>
+    </div>
+  )
+ 
+}
+console.log(MovieCounter);
 
 //components and pass data(props)
 function Actor(props){
