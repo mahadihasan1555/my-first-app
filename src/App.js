@@ -1,18 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
-  const actorName = ["mahadi", "mahdi hasan", "hasan mahadi", "jahid hasan"]
+ const [actor, setActor] = useState([])
+
+  //Load data from API
+  useEffect(() => {
+    fetch('http://jsonplaceholder.typicode.com/users')
+    .then(res =>  res.json())
+    .then(data => setActor(data))
+  }, [])
+
+   const actorName = ["mahadi", "mahdi hasan", "hasan mahadi", "jahid hasan"]
   return (
     <div className="App">
 
       <MovieCounter></MovieCounter>
      
-      <Actor name = {actorName[0]}></Actor>
+      {
+    actorName.map(actorN => <Actor name = {actorN}></Actor>)
+      
+      /* <Actor name = {actorName[0]}></Actor>
       <Actor name = "nahid"></Actor>
       <Actor name = {actorName[2]}></Actor>
-      <Actor name = "sahid"></Actor>
+      <Actor name = "sahid"></Actor> */}
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
       </header>
